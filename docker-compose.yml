@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+    networks:
+      - cipher-net
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - cipher-net
+
+networks:
+  cipher-net:
+    driver: bridge
